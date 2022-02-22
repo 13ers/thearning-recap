@@ -1,2 +1,2 @@
-templates
-static
+templates/* linguist-language=Python
+static/* linguist-language=Python
