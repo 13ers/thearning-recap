@@ -1,0 +1,80 @@
+body {
+  background-image: linear-gradient(135deg, #372a96 10%, #00ccff 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  font-family: "Open Sans", sans-serif;
+  color: #333333;
+}
+
+.box-form {
+  height: 70%;
+  margin: 0 auto;
+  width: 80%;
+  background: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex: 1 1 100%;
+  align-items: stretch;
+  justify-content: space-between;
+  box-shadow: 0 0 20px 6px #00000085;
+}
+
+.box-form div {
+  height: auto;
+}
+.box-form .left {
+  width: 75%;
+  color: #ffffff;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("../images/sekolah3.png");
+  overflow: hidden;
+}
+.box-form .left .overlay {
+  padding: 30px;
+  width: 100%;
+  height: 100%;
+  background: #00000000;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.box-form .right {
+  padding: 40px;
+  overflow: hidden;
+}
+.box-form .right h5 {
+  font-size: 6vmax;
+  line-height: 0;
+}
+
+.box-form .right .inputs {
+  overflow: hidden;
+  position: relative;
+  top: -80px;
+}
+.box-form .right input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 25px;
+  font-size: 16px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #b0b3b9;
+}
+.box-form .right button {
+  position: relative;
+  top: -80px;
+  float: right;
+  color: #fff;
+  font-size: 16px;
+  padding: 12px 35px;
+  border-radius: 50px;
+  display: inline-block;
+  border: 0;
+  outline: 0;
+  box-shadow: 0px 4px 20px 0px #0a2558;
+  background-image: linear-gradient(135deg, #00369b 10%, #0a2558 100%);
+}
