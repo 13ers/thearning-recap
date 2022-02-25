@@ -6,7 +6,6 @@ class UserInfo(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
     fullname = models.CharField(max_length=255)
     gender = models.CharField(max_length=255)
-    field = models.CharField(max_length=255)
     status = models.CharField(max_length=255)
 
     def __str__(self):

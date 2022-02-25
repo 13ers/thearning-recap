@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <title>Thearning-Rekapan nilai</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
@@ -50,7 +51,7 @@
           </a>
         </li>
         <li class="log_out">
-          <a href="#" onclick="confirmation()">
+          <a href="{% url 'logout' %}">
             <i class="bx bx-log-out"></i>
             <span class="links_name">Log out</span>
           </a>

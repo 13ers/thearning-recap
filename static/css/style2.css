@@ -29,7 +29,7 @@ body {
   color: #ffffff;
   background-size: cover;
   background-repeat: no-repeat;
-  background-image: url("./images/sekolah3.png");
+  background-image: url("../images/sekolah3.png");
   overflow: hidden;
 }
 .box-form .left .overlay {
