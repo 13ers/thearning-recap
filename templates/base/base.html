@@ -1,0 +1,153 @@
+{% load static %}
+<head>
+    <meta charset="UTF-8" />
+    <title>Thearning-Rekapan nilai</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="chartjs/Chart.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+
+
+  {% block sidebar %}
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bx-bar-chart-alt-2"></i>
+        <span class="logo_name">Thearning</span>
+      </div>
+      <ul class="nav-links">
+          {% if user_info.status == "admin" %}
+        <li>
+          <a href="#" class="active">
+            <i class="bx bx-grid-alt bx-tada"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../history.html">
+            <i class="bx bx-history"></i>
+            <span class="links_name">Riwayat Login</span>
+          </a>
+        </li>
+        <li>
+          <a href="../report.html">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Laporan Akhir</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'teacher' %}">
+            <i class="bx bxs-user-rectangle"></i>
+            <span class="links_name">Data Guru</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'students' %}">
+            <i class="bx bx-book-reader"></i>
+            <span class="links_name">Data Siswa</span>
+          </a>
+        </li>
+        <li>
+          <a href="../class.html">
+            <i class="bx bx-building-house"></i>
+            <span class="links_name">Data Kelas</span>
+          </a>
+        </li>
+        <li>
+          <a href="../course.html">
+            <i class="bx bx-book-open"></i>
+            <span class="links_name">Data Mapel</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#" onclick="confirmation()">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+          {% elif user_info.status == "teacher" %}
+              <li>
+          <a href="#" class="active">
+            <i class="bx bx-grid-alt bx-tada"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="grade.html">
+            <i class="bx bxs-file-plus"></i>
+            <span class="links_name">Input Nilai</span>
+          </a>
+        </li>
+        <li>
+          <a href="editGrade.html">
+            <i class="bx bx-edit"></i>
+            <span class="links_name">Edit Nilai</span>
+          </a>
+        </li>
+        <li>
+          <a href="../changePassword.html">
+            <i class="bx bx-lock-open-alt"></i>
+            <span class="links_name">Ubah Password</span>
+          </a>
+        </li>
+        <li>
+          <a href="../hrteacher/hrTeacher.html">
+            <i class="bx bxs-user-account"></i>
+            <span class="links_name">Wali Kelas</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="{% url 'logout' %}">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+          {% elif user_info.status == "homeroom" %}
+              <li>
+          <a href="../teacher/user.html">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="../teacher/grade.html">
+            <i class="bx bxs-file-plus"></i>
+            <span class="links_name">Input Nilai</span>
+          </a>
+        </li>
+        <li>
+          <a href="../teacher/editGrade.html">
+            <i class="bx bx-edit"></i>
+            <span class="links_name">Edit Nilai</span>
+          </a>
+        </li>
+        <li>
+          <a href="../changePassword.html">
+            <i class="bx bx-lock-open-alt"></i>
+            <span class="links_name">Ubah Password</span>
+          </a>
+        </li>
+        <li>
+          <a href="#" class="active">
+            <i class="bx bxs-user-account bx-tada"></i>
+            <span class="links_name">Wali Kelas</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#" onclick="confirmation()">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+          {% endif %}
+      </ul>
+    </div>
+  {% endblock sidebar %}
+  {% block body_block %}
+  {% endblock body_block %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">

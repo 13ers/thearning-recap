@@ -26,8 +26,8 @@
           </a>
         </li>
         <li>
-          <a href="grade.html">
-            <i class="bx bxs-file-plus"></i>
+          <a href="#" class="active">
+            <i class="bx bxs-file-plus bx-tada"></i>
             <span class="links_name">Input Nilai</span>
           </a>
         </li>
@@ -38,14 +38,14 @@
           </a>
         </li>
         <li>
-          <a href="changePassword.html">
+          <a href="../changePassword.html">
             <i class="bx bx-lock-open-alt"></i>
             <span class="links_name">Ubah Password</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bxs-user-account bx-tada"></i>
+          <a href="../hrteacher/hrTeacher.html">
+            <i class="bx bxs-user-account"></i>
             <span class="links_name">Wali Kelas</span>
           </a>
         </li>
@@ -61,13 +61,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Data Kelas</span>
+          <span class="dashboard">Input</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details" onclick="move('profile.html')">
+        <div class="profile-details" onclick="move('profileUser.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-log-in-circle"></i>
@@ -77,7 +77,100 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Kelas</div>
+            <div class="title">Nilai</div>
+            <div class="update-details">
+              <ul class="details" style="width: 150px; height: 150px">
+                <li class="topic" style="width: 150px; height: 150px">
+                  <i
+                    class="bx bxs-graduation"
+                    style="font-size: 150px; color: #0a2558"
+                  ></i>
+                </li>
+              </ul>
+              <ul class="details">
+                <li class="topic">Mata pelajaran</li>
+                <li class="topic">Nama Siswa</li>
+                <li class="topic">Kelas</li>
+                <li class="topic">Nilai</li>
+              </ul>
+              <ul class="details">
+                <li>:</li>
+                <li>:</li>
+                <li>:</li>
+                <li>:</li>
+              </ul>
+              <ul class="details">
+                <li>
+                  <input
+                    list="courses"
+                    name="course"
+                    id="course"
+                    placeholder="Pilih Mata Pelajaran"
+                    class="inputs"
+                  />
+                  <datalist id="courses">
+                    <option value="MTK"></option>
+                    <option value="Inggris"></option>
+                    <option value="PWPB"></option>
+                    <option value="Kimia"></option>
+                    <option value="Sejarah"></option>
+                  </datalist>
+                </li>
+                <li>
+                  <input
+                    list="nameStudents"
+                    name="nameStudent"
+                    id="nameStudent"
+                    placeholder="Pilih Nama"
+                    class="inputs"
+                  />
+                  <datalist id="nameStudents">
+                    <option value="nama 1"></option>
+                    <option value="nama 2"></option>
+                    <option value="nama 3"></option>
+                    <option value="nama 4"></option>
+                    <option value="nama 5"></option>
+                  </datalist>
+                </li>
+                <li>
+                  <input
+                    list="classes"
+                    name="class"
+                    id="class"
+                    placeholder="Pilih Kelas"
+                    class="inputs"
+                  />
+                  <datalist id="classes">
+                    <option value="XI-RPL 1"></option>
+                    <option value="XI-RPL 2"></option>
+                    <option value="XI-TKJ 3"></option>
+                    <option value="X-AK 4"></option>
+                    <option value="XII-AK 5"></option>
+                  </datalist>
+                </li>
+                <li>
+                  <input
+                    type="number"
+                    name="grade"
+                    id="grade"
+                    placeholder="Masukkan Nilai"
+                    class="inputs"
+                  />
+                </li>
+              </ul>
+            </div>
+            <div class="button">
+              <a
+                href="grade.html"
+                onClick="alert('Nilai Berhasil Disimpan'); resetInput();"
+                >Simpan</a
+              >
+            </div>
+          </div>
+        </div>
+        <div class="update-boxes2" data-aos="fade-right">
+          <div class="recent-update box">
+            <div class="title">Daftar Nilai</div>
             <div class="update-details" style="float: none">
               <ul class="details">
                 <li class="topic">No</li>
@@ -100,29 +193,23 @@
                 <li>Perempuan</li>
               </ul>
               <ul class="details">
-                <li class="topic">Progres</li>
-                <li>80%</li>
-                <li>70%</li>
+                <li class="topic">Nilai</li>
+                <li>80</li>
+                <li>70</li>
               </ul>
               <ul class="details" style="text-align: center">
                 <li class="topic">Tindakan</li>
                 <li>
                   <ul class="action">
                     <li>
-                      <a href="#" class="print"
-                        ><i class="bx bx-printer" style="margin-right: 10px"></i
-                        >Print</a
-                      >
+                      <a href="#" class="delete"> Hapus</a>
                     </li>
                   </ul>
                 </li>
                 <li>
                   <ul class="action">
                     <li>
-                      <a href="#" class="print"
-                        ><i class="bx bx-printer" style="margin-right: 10px"></i
-                        >Print</a
-                      >
+                      <a href="#" class="delete"> Hapus</a>
                     </li>
                   </ul>
                 </li>
@@ -151,18 +238,12 @@
         } else {
         }
       }
-
-      function confirmation2() {
-        var ask = confirm("Apakah Anda Yakin ?");
-
-        if (ask === true) {
-          alert("Data Berhasil Dihapus");
-        } else {
-        }
-      }
-
       function move(url) {
         window.location = url;
+      }
+
+      function resetInput() {
+        document.getElementsByClassName("inputs").reset();
       }
     </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
