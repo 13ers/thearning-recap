@@ -20,7 +20,7 @@
         <span class="logo_name">Thearning</span>
       </div>
       <ul class="nav-links">
-          {% if user_info.status == "admin" %}
+          {% if user_info.is_admin %}
         <li>
           <a href="#" class="active">
             <i class="bx bx-grid-alt bx-tada"></i>
@@ -69,7 +69,7 @@
             <span class="links_name">Log out</span>
           </a>
         </li>
-          {% elif user_info.status == "teacher" %}
+          {% elif user_info.is_teacher %}
               <li>
           <a href="#" class="active">
             <i class="bx bx-grid-alt bx-tada"></i>
@@ -106,7 +106,7 @@
             <span class="links_name">Log out</span>
           </a>
         </li>
-          {% elif user_info.status == "homeroom" %}
+          {% elif user_info.is_homeroom %}
               <li>
           <a href="../teacher/user.html">
             <i class="bx bx-grid-alt"></i>

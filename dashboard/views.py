@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 
 from users.models import ThearningUser
-from users.models import Student
+from users.models import Student, Teacher
 
 def dashboard_view(request):
 
@@ -37,19 +37,29 @@ def teacher_data_view(request):
 def add_teacher_view(request):
     get = request.POST.get
     if request.method == "POST":
-        username = get('username')
+        uid = get('nip')
+        first_name = get('first_name')
+        last_name = get('last_name')
         password = get('password')
-        uid = get('uid')
+        email = get('email')
         gender = get('gender')
-        level = get('level')
+        status = get('level')
         course = get('course')
 
-        User.objects.create_user(
-
+        user = ThearningUser.objects.create(
+            uid=uid,
+            first_name=first_name,
+            last_name=last_name,
+            email=email,
+            password=password,
+            gender=gender,
+            status=status,
         )
-        ThearningUser.objects.create(
 
-        )
+        teacher = Teacher.objects.create(user=user, course_id=course)
+
+        user.save()
+        teacher.save()
 
     return render(request, "addTeacher.html")
     

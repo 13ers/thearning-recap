@@ -89,6 +89,8 @@
 
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
+            <form action="{% url 'addteacher' %}" method="POST">
+                            {% csrf_token %}
           <div class="recent-update box">
             <div class="title">Guru</div>
             <div class="update-details">
@@ -101,9 +103,11 @@
                 </li>
               </ul>
               <ul class="details">
-                <li class="topic">Username</li>
+                <li class="topic">Nama Pertama</li>
+                <li class="topic">Nama Terakhir</li>
                 <li class="topic">Password</li>
                 <li class="topic">NIP</li>
+                <li class="topic">Email</li>
                 <li class="topic">Jenis Kelamin</li>
                 <li class="topic">Level</li>
                 <li class="topic">Mata Pelajaran</li>
@@ -115,14 +119,24 @@
                 <li>:</li>
                 <li>:</li>
                 <li>:</li>
+                <li>:</li>
+                <li>:</li>
               </ul>
               <ul class="details">
                 <li>
                   <input
                     type="text"
-                    name="username"
+                    name="first_name"
                     id="username"
-                    placeholder="Masukan Nama"
+                    placeholder="Masukan Nama Pertama"
+                  />
+                </li>
+                  <li>
+                  <input
+                    type="text"
+                    name="last_name"
+                    id="username"
+                    placeholder="Masukan Nama Terakhir"
                   />
                 </li>
                 <li>
@@ -141,6 +155,14 @@
                     placeholder="Masukkan NIP"
                   />
                 </li>
+                  <li>
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Masukan Email"
+                  />
+                </li>
                 <li>
                   <input
                     type="text"
@@ -157,23 +179,20 @@
                     placeholder="Masukkan Level"
                   />
                 </li>
-                <li>
+                  <li>
                   <input
                     type="text"
-                    name="class"
-                    id="class"
-                    placeholder="Masukkan Kelas"
+                    name="course"
+                    id="course"
+                    placeholder="Masukkan Mapel"
                   />
                 </li>
               </ul>
             </div>
-            <div class="button">
-              <a
-                href="teacher.html"
-                onClick="alert('Data Guru Berhasil Ditambahkan')"
-                >Simpan</a
-              >
-            </div>
+            <button class="button" type="submit">
+                <p>Submit</p>
+            </button>
+          </form>
           </div>
         </div>
       </div>
@@ -189,17 +208,17 @@
         } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
       };
 
-      function confirmation() {
-        var ask = confirm("Apakah Anda Yakin ?");
-
-        if (ask === true) {
-          window.location = "login.html";
-        } else {
-        }
-      }
-      function move(url) {
-        window.location = url;
-      }
+      {#function confirmation() {#}
+      {#  var ask = confirm("Apakah Anda Yakin ?");#}
+      {##}
+      {#  if (ask === true) {#}
+      {#    window.location = "login.html";#}
+      {#  } else {#}
+      {#  }#}
+      {#}#}
+      {#function move(url) {#}
+      {#  window.location = url;#}
+      {#}#}
     </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>

@@ -32,6 +32,10 @@ class ThearningUser(AbstractUser):
     def is_admin(self):
         return self.status == "admin"
 
+    @property
+    def is_homeroom(self):
+        return self.status == "homeroom"
+
 
     def __str__(self):
         return self.uid
@@ -40,6 +44,9 @@ class ThearningUser(AbstractUser):
 class Course(models.Model):
     course_id = models.IntegerField(unique=True, auto_created=True)
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.name} | {self.course_id}"
 
 
 class Class(models.Model):
@@ -60,12 +67,21 @@ class Teacher(models.Model):
     user = models.ForeignKey(ThearningUser, on_delete=models.PROTECT)
     course = models.ForeignKey(Course, on_delete=models.PROTECT)
 
+    def __str__(self):
+        return f"{self.user.first_name} | {self.user.uid}"
+
 
 class Homeroom(models.Model):
     classroom = models.ForeignKey(Class, on_delete=models.PROTECT)
     user = models.ForeignKey(Teacher, on_delete=models.PROTECT)
 
+    def __str__(self):
+        return f"{self.user.user.first_name} | {self.user.user.uid}"
+
 
 class Student(models.Model):
     classroom = models.ForeignKey(Class, on_delete=models.PROTECT)
     name = models.CharField(max_length=255)
+
+    def __str__(self):
+        return f"{self.name} | {self.classroom}"
