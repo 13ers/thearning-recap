@@ -7,18 +7,18 @@ from django.urls import reverse
 from .models import ThearningUser
 
 def login_view(request):
-    # if request.method == "POST":
-    #     uid = request.POST.get("uid")
-    #     _user = ThearningUser.objects.filter(user__userinfo__uid=uid).first()
-    #     password = request.POST.get("password")
-    #     user = authenticate(request, username=_user.user.username, password=password)
-    #     if user:
-    #         login(request, user)
-    #         return HttpResponseRedirect(reverse('dashboard'))
-    #     else:
-    #         return HttpResponse('Invalid login details!')
-    #
-    # return render(request, "login.html")
+    if request.method == "POST":
+        uid = request.POST.get("uid")
+        _user = ThearningUser.objects.filter(uid=uid).first()
+        password = request.POST.get("password")
+        user = authenticate(request, username=_user.user.username, password=password)
+        if user:
+            login(request, user)
+            return HttpResponseRedirect(reverse('dashboard'))
+        else:
+            return HttpResponse('Invalid login details!')
+
+    return render(request, "login.html")
     pass
 
 @login_required

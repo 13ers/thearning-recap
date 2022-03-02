@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-from django.contrib.auth.base_user import BaseUserManager, AbstractBaseUser
+from django.contrib.auth.base_user import BaseUserManager
 from django.contrib.auth.models import AbstractUser, PermissionsMixin
 from django.utils import timezone
 
@@ -10,17 +10,14 @@ from django.utils.translation import gettext_lazy as _
 from .managers import ThearningUserManager
 
 
-class ThearningUser(AbstractBaseUser):
+class ThearningUser(AbstractUser):
+    username = None
     uid = models.CharField(unique=True, max_length=20)
     email = models.EmailField(verbose_name='email address', max_length=255, unique=True)
-    fullname = models.CharField(max_length=255)
     gender = models.CharField(max_length=30)
     status = models.CharField(max_length=20)
-    date_joined = models.DateTimeField(default=timezone.now)
 
     USERNAME_FIELD = 'uid'
-    REQUIRED_FIELDS = [email, status]
-
     objects = ThearningUserManager()
 
     @property
@@ -35,10 +32,6 @@ class ThearningUser(AbstractBaseUser):
     def is_admin(self):
         return self.status == "admin"
 
-    def has_module_perms(self, app_label):
-        "Does the user have permissions to view the app `app_label`?"
-        # Simplest possible answer: Yes, always
-        return True
 
     def __str__(self):
         return self.uid

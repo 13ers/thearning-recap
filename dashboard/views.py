@@ -15,7 +15,7 @@ def dashboard_view(request):
     except User.DoesNotExist:
         user_info = None
 
-    first_name = user_info.fullname.split(" ")[0]
+    first_name = user_info.first_name
 
     if user_info is None:
         return redirect("login")

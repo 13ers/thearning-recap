@@ -56,9 +56,9 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-AUTHENTICATION_BACKENDS = [
-    "users.backends.ThearningAuthBackend"
-]
+# AUTHENTICATION_BACKENDS = [
+#     "users.backends.ThearningAuthBackend"
+# ]
 
 ROOT_URLCONF = 'ThearningRecap.urls'
 
