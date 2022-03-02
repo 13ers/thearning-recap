@@ -1,79 +1,9 @@
+{% extends 'base/base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Thearning-Rekapan nilai</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
-    <link
-      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
-      rel="stylesheet"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript" src="chartjs/Chart.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-  </head>
-  <body>
-    <div class="sidebar">
-      <div class="logo-details">
-        <i class="bx bx-bar-chart-alt-2"></i>
-        <span class="logo_name">Thearning</span>
-      </div>
-      <ul class="nav-links">
-        <li>
-          <a href="#" class="active">
-            <i class="bx bx-grid-alt bx-tada"></i>
-            <span class="links_name">Dashboard</span>
-          </a>
-        </li>
-        <li>
-          <a href="grade.html">
-            <i class="bx bxs-file-plus"></i>
-            <span class="links_name">Input Nilai</span>
-          </a>
-        </li>
-        <li>
-          <a href="editGrade.html">
-            <i class="bx bx-edit"></i>
-            <span class="links_name">Edit Nilai</span>
-          </a>
-        </li>
-        <li>
-          <a href="changePassword.html">
-            <i class="bx bx-lock-open-alt"></i>
-            <span class="links_name">Ubah Password</span>
-          </a>
-        </li>
-        <li>
-          <a href="hrTeacher.html">
-            <i class="bx bxs-user-account"></i>
-            <span class="links_name">Wali Kelas</span>
-          </a>
-        </li>
-        <li class="log_out">
-          <a href="{% url 'logout' %}">
-            <i class="bx bx-log-out"></i>
-            <span class="links_name">Log out</span>
-          </a>
-        </li>
-      </ul>
-    </div>
+
+  {% block body_block %}
     <section class="home-section">
-      <nav>
-        <div class="sidebar-button">
-          <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Dashboard</span>
-        </div>
-        <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
-        </div>
-        <div class="profile-details" onclick="move('profileUser.html')">
-          <i class="bx bxs-user-circle"></i>
-          <span class="admin_name">Username (Level)</span>
-          <i class="bx bx-log-in-circle"></i>
-        </div>
-      </nav>
+    {% include 'base/navbar.html' %}
 
       <div class="home-content">
         <div class="overview-boxes">
@@ -210,5 +140,4 @@
         anchorPlacement: "top-bottom",
       });
     </script>
-  </body>
-</html>
+  {% endblock body_block %}

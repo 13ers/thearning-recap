@@ -1,9 +1,10 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <title>Thearning-Rekapan nilai</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
@@ -20,7 +21,7 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin.html">
+          <a href="admin/admin.html">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -38,13 +39,13 @@
           </a>
         </li>
         <li>
-          <a href="teacher.html">
+          <a href="{% url 'teacher' %}">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
+          <a href="{% url 'students' %}" class="active">
             <i class="bx bx-book-reader bx-tada"></i>
             <span class="links_name">Data Siswa</span>
           </a>
