@@ -20,51 +20,45 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin/admin.html">
+          <a href="{% url 'admin' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
+          <a href="{% url 'history' %}">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
+          <a href="{% url 'report' %}">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
+          <a href="{% url 'teacher' %}">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="student.html">
+          <a href="{% url 'student' %}">
             <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="class.html">
+          <a href="{% url 'class' %}">
             <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="course.html">
-            <i class="bx bx-book-open"></i>
+          <a href="#" class="active">
+            <i class="bx bx-book-open bx-tada"></i>
             <span class="links_name">Data Mapel</span>
-          </a>
-        </li>
-        <li>
-          <a href="hrteacher/hrTeacher.html">
-            <i class="bx bxs-user-account"></i>
-            <span class="links_name">Wali Kelas</span>
           </a>
         </li>
         <li class="log_out">
@@ -79,13 +73,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">Data mapel</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details">
+        <div class="profile-details" onclick="move('profile.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-log-in-circle"></i>
@@ -95,46 +89,51 @@
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Profil</div>
-            <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Username(Level)</li>
-                <li class="topic">Password</li>
-                <li class="topic">Mata Pelajaran</li>
-                <li class="topic">Kelas</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  Username
-                  <hr />
-                </li>
-                <li>
-                  ********
-                  <hr />
-                </li>
-                <li>
-                  MTK
-                  <hr />
-                </li>
-                <li>
-                  XI-RPL 1
-                  <hr />
-                </li>
-              </ul>
+            <div class="title">Mapel</div>
+            <div class="update-details" style="float: none">
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Nama</th>
+                  <th class="topic">Jurusan</th>
+                  <th class="topic">Pengajar</th>
+                  <th class="topic" colspan="2">Tindakan</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>MTK</td>
+                  <td>Umum</td>
+                  <td>nama 1</td>
+                  <td class="action">
+                    <a href="{% url 'editCourse' %}" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>PBO</td>
+                  <td>RPL</td>
+                  <td>nama 2</td>
+                  <td class="action">
+                    <a href="{% url 'editCourse' %}" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+              </table>
+            </div>
+            <div class="button">
+              <a href="{% url 'addCourse' %}"
+                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
+                >Tambah</a
+              >
             </div>
           </div>
         </div>
@@ -158,6 +157,19 @@
           window.location = "login.html";
         } else {
         }
+      }
+
+      function confirmation2() {
+        var ask = confirm("Apakah Anda Yakin ?");
+
+        if (ask === true) {
+          alert("Data Berhasil Dihapus");
+        } else {
+        }
+      }
+
+      function move(url) {
+        window.location = url;
       }
     </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

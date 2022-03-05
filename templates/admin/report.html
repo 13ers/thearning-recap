@@ -8,8 +8,8 @@
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script type="text/javascript" src="chartjs/Chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
@@ -20,43 +20,43 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin/admin.html">
+          <a href="{% url 'admin' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
+          <a href="{% url 'history' %}">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
-            <i class="bx bxs-report"></i>
+          <a href="#">
+            <i class="bx bxs-report bx-tada"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
+          <a href="{% url 'teacher' %}">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="student.html">
+          <a href="{% url 'student' %}">
             <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bx-building-house bx-tada"></i>
+          <a href="{% url 'class' %}">
+            <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="course.html">
+          <a href="{% url 'course' %}">
             <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
           </a>
@@ -73,7 +73,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Data Kelas</span>
+          <span class="dashboard">Laporan</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -87,64 +87,80 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes2" data-aos="fade-right">
+        <div class="update-boxes" data-aos="fade-up">
           <div class="recent-update box">
-            <div class="title">Kelas</div>
-            <div class="update-details" style="float: none">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tingkat</li>
-                <li>10</li>
-                <li>11</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jurusan</li>
-                <li>RPL</li>
-                <li>AK</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jumlah Kelas</li>
-                <li>2</li>
-                <li>6</li>
-              </ul>
-              <ul class="details" style="text-align: center">
-                <li class="topic">Tindakan</li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editClass.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-                <li>
-                  <ul class="action">
-                    <li>
-                      <a href="editClass.html" class="edit">Edit</a>
-                    </li>
-                    <li>
-                      <a href="#" class="delete" onclick="confirmation2()"
-                        >Hapus</a
-                      >
-                    </li>
-                  </ul>
-                </li>
-              </ul>
+            <div class="title">Laporan Akhir</div>
+            <div class="update-details">
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Tanggal</th>
+                  <th class="topic">Jurusan</th>
+                  <th class="topic">Kelas</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>17-02-2022</td>
+                  <td>AK</td>
+                  <td>XI-RPL 1</td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>18-02-2022</td>
+                  <td>RPL</td>
+                  <td>XI-RPL 2</td>
+                </tr>
+              </table>
             </div>
+
             <div class="button">
-              <a href="addClass.html"
-                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
-                >Tambah</a
-              >
+              <a href="#">See All</a>
             </div>
+          </div>
+          <div class="top-update box" data-aos="fade-down">
+            <div class="title">
+              Export
+              <i class="bx bxs-file-export"></i>
+            </div>
+            <table>
+              <colgroup>
+                <col span="1" style="width: 10%" />
+                <col span="1" style="width: 60%" />
+                <col span="1" style="width: 30%" />
+              </colgroup>
+              <tr class="top-update-details">
+                <td class="notAva"><i class="bx bxs-x-circle"></i></td>
+                <td>
+                  <a href="#">
+                    <span class="item">XI-RPL1</span>
+                  </a>
+                </td>
+                <td class="print">
+                  <div class="button">
+                    <a href="#" onclick="return false" class="disabled"
+                      ><i class="bx bx-printer" style="margin-right: 5px"></i
+                      >Print</a
+                    >
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="available"><i class="bx bxs-check-circle"></i></td>
+                <td>
+                  <a href="#">
+                    <span class="item">XI-RPL1</span>
+                  </a>
+                </td>
+                <td class="print">
+                  <div class="button">
+                    <a href="#" onclick="return false"
+                      ><i class="bx bx-printer" style="margin-right: 5px"></i
+                      >Print</a
+                    >
+                  </div>
+                </td>
+              </tr>
+            </table>
           </div>
         </div>
       </div>
@@ -165,15 +181,6 @@
 
         if (ask === true) {
           window.location = "login.html";
-        } else {
-        }
-      }
-
-      function confirmation2() {
-        var ask = confirm("Apakah Anda Yakin ?");
-
-        if (ask === true) {
-          alert("Data Berhasil Dihapus");
         } else {
         }
       }
