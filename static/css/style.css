@@ -305,6 +305,43 @@ nav .profile-details i {
   background: #0d3073;
 }
 
+.update-boxes .box .buttonPrint {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.update-boxes .box .buttonPrint a {
+  color: #fff;
+  background: #0a2558;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.update-boxes .box .buttonPrint a:hover {
+  background: #0d3073;
+}
+
+.update-boxes2 .box .buttonSave {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}
+.update-boxes2 .box .buttonSave a {
+  color: #fff;
+  background: #0a2558;
+  padding: 4px 12px;
+  font-size: 15px;
+  font-weight: 400;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.update-boxes2 .box .buttonSave a:hover {
+  background: #0d3073;
+}
 /* Right box */
 .home-content .update-boxes .top-update {
   width: 35%;
@@ -349,7 +386,7 @@ nav .profile-details i {
 .home-content .update-boxes2 {
   display: flex;
   justify-content: space-between;
-  /* padding: 0 20px; */
+  margin-top: 10px;
 }
 
 /* left box */
@@ -361,8 +398,10 @@ nav .profile-details i {
   border-radius: 12px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
 }
-.home-content .update-boxes2 {
-  margin-top: 10px;
+.home-content .update-boxes2 .update-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 .update-boxes2 .box .title {
   font-size: 24px;
@@ -488,8 +527,9 @@ td a.delete:hover {
     left: 220px;
   }
   .home-section nav {
-    width: calc(100% - 60px);
+    width: calc(100% - 30px);
     left: 60px;
+    position: fixed;
   }
   .sidebar.active ~ .home-section nav {
     width: calc(100% - 220px);
@@ -507,6 +547,15 @@ td a.delete:hover {
   }
   .home-content .update-boxes .top-update {
     margin: 0;
+  }
+
+  .home-content .update-boxes2 {
+    flex-direction: column;
+  }
+  .home-content .update-boxes2 .box {
+    width: 100%;
+    overflow-x: scroll;
+    margin-bottom: 30px;
   }
 }
 @media (max-width: 1000px) {
@@ -528,13 +577,119 @@ td a.delete:hover {
   .home-content .update-boxes .update-details {
     width: 560px;
   }
+  .home-content .update-boxes2 .update-details {
+    width: 560px;
+  }
 }
 @media (max-width: 550px) {
+  * {
+    font-size: 0, 5em;
+  }
+  .home-content nav {
+    position: fixed;
+    width: auto;
+  }
+  .overview-boxes {
+    margin-bottom: 0px;
+  }
   .overview-boxes .box {
     width: 100%;
     margin-bottom: 15px;
   }
   .sidebar.active ~ .home-section nav .profile-details {
     display: none;
+  }
+  .home-content .update-boxes {
+    margin-top: -10px;
+  }
+
+  .home-content .update-boxes .recent-update {
+    width: auto;
+  }
+
+  .home-content .update-boxes .top-update {
+    width: auto;
+    padding: 20px 30px;
+    margin: 0 5% 5% 5%;
+  }
+
+  .home-content .update-boxes2 .recent-update {
+    width: auto;
+  }
+  .update-boxes .box .button {
+    position: relative;
+    right: -330px;
+  }
+
+  .update-boxes2 .box .button {
+    position: relative;
+    right: -58vw;
+  }
+  .update-boxes2.v2 .recent-update.box .button {
+    position: relative;
+    right: -98vw;
+  }
+
+  .update-boxes2.v3 .recent-update.box .button {
+    position: relative;
+    right: -78vw;
+  }
+  .home-content .update-boxes2 table.input {
+    font-size: 0.8em;
+    position: relative;
+    border-spacing: 0.5;
+  }
+  .home-content .update-boxes2 {
+    width: 100%;
+  }
+  .home-content .update-boxes2 .recent-update.input {
+    width: 70vw;
+    overflow: hidden;
+  }
+
+  .home-content .update-boxes2 .update-details {
+    width: 10vw;
+    display: inline;
+  }
+  .home-content .update-boxes2 table.input {
+    margin-top: 3vh;
+    width: 5vw;
+  }
+  .home-content .update-boxes2 table.input colgroup col:nth-child(1) {
+    width: 0%;
+  }
+  .home-content .update-boxes2 table.input colgroup col:nth-child(2) {
+    width: 20%;
+  }
+  .home-content .update-boxes2 table.input colgroup col:nth-child(3) {
+    width: 70%;
+  }
+  .home-content .update-boxes2 table.input tbody tr.details.icon {
+    display: none;
+  }
+  .home-content .update-boxes2 table.input tbody tr {
+    top: -30px;
+    height: 3;
+    position: relative;
+    left: -20px;
+  }
+  .home-content .update-boxes2 table.input tr td input {
+    font-size: 0.8em;
+    width: 35vw;
+    height: 6.2vh;
+  }
+  .home-content .update-boxes2 .recent-update.v2 table.input tr td {
+    font-size: 0.75em;
+    width: 30vw;
+    height: 6.2vh;
+  }
+  .update-boxes2 .box .buttonSave a {
+    position: relative;
+    top: -3vh;
+    padding: 1px 3px;
+  }
+  .update-boxes2 .box .buttonSave.v2 a {
+    font-size: 0.75em;
+    margin-right: 5px;
   }
 }
