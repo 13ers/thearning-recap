@@ -36,7 +36,6 @@ class ThearningUser(AbstractUser):
     def is_homeroom(self):
         return self.status == "homeroom"
 
-
     def __str__(self):
         return self.uid
 

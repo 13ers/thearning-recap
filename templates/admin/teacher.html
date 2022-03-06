@@ -1,9 +1,11 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="UTF-8" />
     <title>Thearning-Rekapan nilai</title>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}" />
     <link
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
@@ -20,7 +22,7 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="{% url 'admin' %}">
+          <a href="{% url 'dashboard' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -98,16 +100,17 @@
                 <th class="topic">NIP</th>
                 <th class="topic">Jenis Kelamin</th>
                 <th class="topic">Mapel</th>
-                <th class="topic">Kelas</th>
+                <th class="topic">Email</th>
                 <th class="topic" colspan="2">Tindakan</th>
               </tr>
+              {% for teacher in teachers %}
               <tr class="details">
-                <td>1</td>
-                <td>nama 1</td>
-                <td>020202</td>
-                <td>Laki-Laki</td>
-                <td>MTK</td>
-                <td>XI-RPL 1</td>
+                <td>{{ count }}</td>
+                <td>{{ teacher.user.first_name }} {{ teacher.user.last_name }}</td>
+                <td>{{ teacher.user.user_id }}</td>
+                <td>{{ teacher.user.gender }}</td>
+                <td>{{ teacher.course }}</td>
+                <td>{{ teacher.user.email }}</td>
                 <td class="action">
                   <a href="editTeacher.html" class="edit">Edit</a>
                 </td>
@@ -115,25 +118,12 @@
                   <a href="#" class="delete" onclick="confirmation2()">Hapus</a>
                 </td>
               </tr>
-              <tr class="details">
-                <td>2</td>
-                <td>nama 2</td>
-                <td>010101</td>
-                <td>Perempuan</td>
-                <td>B.Inggris</td>
-                <td>XI-RPL 2</td>
-                <td class="action">
-                <a href="editTeacher.html" class="edit">Edit</a>
-                </td>
-                <td class="action">
-                <a href="#" class="delete" onclick="confirmation2()">Hapus</a>
-                </td>
-              </tr>
+              {% endfor %}
                 </td>
               </table>
             </div>
             <div class="button">
-              <a href="addTeacher.html"
+              <a href="{% url 'addteacher' %}"
                 ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
                 >Tambah</a
               >

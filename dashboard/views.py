@@ -20,24 +20,28 @@ def dashboard_view(request):
     if user_info is None:
         return redirect("login")
 
-    if user_info.status == "admin":
+    if user_info.is_admin:
         return render(request, "admin/admin.html", {"user_info":user_info, "first_name":first_name})
 
-    elif user_info.status == "homeroom":
+    elif user_info.is_homeroom:
         return render(request, "hrteacher/hrTeacher.html", {"user_info":user_info, "first_name":first_name})
 
-    elif user_info.status == "teacher":
-        return render(request, "teacher/user.html", {"user_info": user_info, "first_name":first_name})
+    elif user_info.is_teacher:
+        return render(request, "user/user.html", {"user_info": user_info, "first_name":first_name})
 
 @staff_member_required
 def teacher_data_view(request):
-    return render(request, "teacher.html")
+    objects = Teacher.objects.all()
+
+    count = objects.count()
+
+    return render(request, "admin/teacher.html", {"teachers": objects, "count":range(1, count + 1)})
 
 @staff_member_required
 def add_teacher_view(request):
     get = request.POST.get
     if request.method == "POST":
-        uid = get('nip')
+        uid = get('uid')
         first_name = get('first_name')
         last_name = get('last_name')
         password = get('password')
@@ -61,14 +65,27 @@ def add_teacher_view(request):
         user.save()
         teacher.save()
 
-    return render(request, "addTeacher.html")
+    return render(request, "admin/addTeacher.html")
     
 
 def students_list(request):
 
     students = Student.objects.all()
 
-    return render(request, "student.html",{"students":students})
+    return render(request, "admin/student.html",{"students":students})
 
+# UNIMPLEMENTED VIEWS
+
+def class_view(request):
+    return render(request, "admin/class.html")
+
+def course_view(request):
+    return render(request, "admin/course.html")
+
+def report_view(request):
+    return render(request, "admin/report.html")
+
+def history_view(request):
+    return render(request, "admin/history.html")
 
 
