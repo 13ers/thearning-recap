@@ -8,8 +8,8 @@
       href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script type="text/javascript" src="chartjs/Chart.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
   </head>
   <body>
@@ -20,44 +20,44 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin/admin.html">
+          <a href="{% url 'admin' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
+          <a href="{% url 'history' %}">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bxs-report bx-tada"></i>
+          <a href="{% url 'report' %}">
+            <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
+          <a href="{% url 'teacher' %}">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="student.html">
+          <a href="{% url 'student' %}">
             <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="class.html">
+          <a href="{% url 'class' %}">
             <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="course.html">
-            <i class="bx bx-book-open"></i>
+          <a href="{% url 'course' %}" class="active">
+            <i class="bx bx-book-open bx-tada"></i>
             <span class="links_name">Data Mapel</span>
           </a>
         </li>
@@ -73,7 +73,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Laporan</span>
+          <span class="dashboard">Input</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -87,69 +87,68 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes" data-aos="fade-up">
-          <div class="recent-update box">
-            <div class="title">Laporan Akhir</div>
+        <div class="update-boxes2" data-aos="fade-right">
+          <div class="recent-update box input">
+            <div class="title">Mapel</div>
             <div class="update-details">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Jurusan</li>
-                <li>AK</li>
-                <li>RPL</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Kelas</li>
-                <li>XI-RPL 1</li>
-                <li>XI-RPL 2</li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details icon">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-book-open"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Nama</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="courseName"
+                        id="courseName"
+                        placeholder="Nama Jurusan"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jurusan</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="major"
+                        id="major"
+                        placeholder="Jurusan"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Pengajar</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="teacher"
+                        id="teacher"
+                        placeholder="Nama Pengajar"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="button">
-              <a href="#">See All</a>
+            <div class="buttonSave">
+              <a
+                href="{% url 'course' %}"
+                onClick="alert('Data Mapel Berhasil Ditambahkan')"
+                ><i class="bx bxs-file-plus" style="margin: 5px"></i>Simpan</a
+              >
             </div>
-          </div>
-          <div class="top-update box" data-aos="fade-down">
-            <div class="title">
-              Export
-              <i class="bx bxs-file-export"></i>
-            </div>
-            <ul class="top-update-details">
-              <li>
-                <a href="#">
-                  <i class="bx bxs-x-circle" style="color: red"></i>
-                  <span class="item">XI-RPL1</span>
-                </a>
-                <div class="button">
-                  <a
-                    href="admin/admin.html"
-                    onclick="return false"
-                    style="background: rgb(61, 61, 61); cursor: default"
-                    ><i class="bx bx-printer" style="margin-right: 5px"></i
-                    >Print</a
-                  >
-                </div>
-              </li>
-              <li>
-                <a href="#">
-                  <i class="bx bxs-check-circle" style="color: green"></i>
-                  <span class="item">XI-RPL2</span>
-                </a>
-                <div class="button">
-                  <a href="admin/admin.html"
-                    ><i class="bx bx-printer" style="margin-right: 5px"></i
-                    >Print</a
-                  >
-                </div>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -173,7 +172,6 @@
         } else {
         }
       }
-
       function move(url) {
         window.location = url;
       }

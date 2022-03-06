@@ -20,43 +20,43 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin/admin.html">
+          <a href="{% url 'admin' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
+          <a href="{% url 'history' %}">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
+          <a href="{% url 'report' %}">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
+          <a href="{% url 'teacher' %}">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="student.html">
+          <a href="#" class="active">
             <i class="bx bx-book-reader bx-tada"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="class.html" class="active">
+          <a href="{% url 'class' %}">
             <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="course.html">
+          <a href="{% url 'course' %}">
             <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
           </a>
@@ -73,7 +73,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Edit</span>
+          <span class="dashboard">Data Siswa</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -87,61 +87,55 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes2" data-aos="fade-right">
+        <div class="update-boxes2 v3" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">kelas</div>
-            <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-building-house"
-                    style="color: #0a2558; font-size: 150px"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tingkat</li>
-                <li class="topic">Jurusan</li>
-                <li class="topic">Jumlah</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  <input
-                    type="text"
-                    name="level"
-                    id="level"
-                    placeholder="Tingkat"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="major"
-                    id="major"
-                    placeholder="Jurusan"
-                    style="width: 230%"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="total"
-                    id="total"
-                    placeholder="Jumlah Kelas"
-                    style="width: 230%"
-                  />
-                </li>
-              </ul>
+            <div class="title">Siswa</div>
+            <div class="update-details" style="float: none">
+              <table>
+                <tr class="details">
+                  <th class="topic">No</th>
+                  <th class="topic">Nama</th>
+                  <th class="topic">NIK</th>
+                  <th class="topic">Jenis Kelamin</th>
+                  <th class="topic">Kelas</th>
+                  <th class="topic" colspan="2">Tindakan</th>
+                </tr>
+                <tr class="details">
+                  <td>1</td>
+                  <td>nama1</td>
+                  <td>020202</td>
+                  <td>Perempuan</td>
+                  <td>XI-RPL 2</td>
+                  <td class="action">
+                    <a href="{% url 'editStudent' %}" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+                <tr class="details">
+                  <td>2</td>
+                  <td>nama2</td>
+                  <td>010101</td>
+                  <td>Laki-Laki</td>
+                  <td>XI-RPL 1</td>
+                  <td class="action">
+                    <a href="{% url 'editStudent' %}" class="edit">Edit</a>
+                  </td>
+                  <td class="action">
+                    <a href="#" class="delete" onclick="confirmation2()"
+                      >Hapus</a
+                    >
+                  </td>
+                </tr>
+              </table>
             </div>
             <div class="button">
-              <a href="class.html" onClick="alert('Data Kelas Berhasil Diubah')"
-                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
+              <a href="{% url 'addStudent' %}"
+                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
+                >Tambah</a
               >
             </div>
           </div>
@@ -167,6 +161,16 @@
         } else {
         }
       }
+
+      function confirmation2() {
+        var ask = confirm("Apakah Anda Yakin ?");
+
+        if (ask === true) {
+          alert("Data Berhasil Dihapus");
+        } else {
+        }
+      }
+
       function move(url) {
         window.location = url;
       }

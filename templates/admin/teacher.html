@@ -20,43 +20,43 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin/admin.html">
+          <a href="{% url 'admin' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="#" class="active">
-            <i class="bx bx-history bx-spin"></i>
+          <a href="{% url 'history' %}">
+            <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
+          <a href="{% url 'report' %}">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
-            <i class="bx bxs-user-rectangle"></i>
+          <a href="#" class="active">
+            <i class="bx bxs-user-rectangle bx-tada"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="student.html">
+          <a href="{% url 'student' %}">
             <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="class.html">
+          <a href="{% url 'class' %}">
             <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="course.html">
+          <a href="{% url 'course' %}">
             <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
           </a>
@@ -73,7 +73,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Riwayat</span>
+          <span class="dashboard">Data Guru</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -87,62 +87,57 @@
       </nav>
 
       <div class="home-content">
-        <div class="update-boxes" data-aos="fade-right">
+        <div class="update-boxes2 v2" data-aos="fade-right">
           <div class="recent-update box">
-            <div class="title">Riwayat</div>
-            <div class="update-details">
-              <ul class="details">
-                <li class="topic">No</li>
-                <li>1</li>
-                <li>2</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Waktu</li>
-                <li>09.30</li>
-                <li>08.00</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Tanggal</li>
-                <li>17-02-2022</li>
-                <li>18-02-2022</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">User</li>
-                <li>Username</li>
-                <li>Username</li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Kelas</li>
-                <li>XI-RPL 1</li>
-                <li>XI-RPL 2</li>
-              </ul>
+            <div class="title">Guru</div>
+            <div class="update-details" style="float: none">
+              <table>
+              <tr class="details">
+                <th class="topic">No</th>
+                <th class="topic">Nama</th>
+                <th class="topic">NIP</th>
+                <th class="topic">Jenis Kelamin</th>
+                <th class="topic">Mapel</th>
+                <th class="topic">Kelas</th>
+                <th class="topic" colspan="2">Tindakan</th>
+              </tr>
+              <tr class="details">
+                <td>1</td>
+                <td>nama 1</td>
+                <td>020202</td>
+                <td>Laki-Laki</td>
+                <td>MTK</td>
+                <td>XI-RPL 1</td>
+                <td class="action">
+                  <a href="editTeacher.html" class="edit">Edit</a>
+                </td>
+                <td class="action">
+                  <a href="#" class="delete" onclick="confirmation2()">Hapus</a>
+                </td>
+              </tr>
+              <tr class="details">
+                <td>2</td>
+                <td>nama 2</td>
+                <td>010101</td>
+                <td>Perempuan</td>
+                <td>B.Inggris</td>
+                <td>XI-RPL 2</td>
+                <td class="action">
+                <a href="editTeacher.html" class="edit">Edit</a>
+                </td>
+                <td class="action">
+                <a href="#" class="delete" onclick="confirmation2()">Hapus</a>
+                </td>
+              </tr>
+                </td>
+              </table>
             </div>
             <div class="button">
-              <a href="#">See All</a>
+              <a href="addTeacher.html"
+                ><i class="bx bxs-user-plus bx-xs" style="margin-right: 5px"></i
+                >Tambah</a
+              >
             </div>
-          </div>
-          <div class="top-update box" data-aos="fade-left">
-            <div class="title">Wali Kelas</div>
-            <ul class="top-update-details">
-              <li>
-                <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon.png"
-                  />
-                  <span class="item">Nama</span>
-                </a>
-                <span class="desc">Kelas</span>
-              </li>
-              <li>
-                <a href="#">
-                  <img
-                    src="https://img.icons8.com/external-nawicon-flat-nawicon/50/000000/external-teacher-back-to-school-nawicon-flat-nawicon-2.png"
-                  />
-                  <span class="item">Nama</span>
-                </a>
-                <span class="desc">kelas</span>
-              </li>
-            </ul>
           </div>
         </div>
       </div>
@@ -163,6 +158,15 @@
 
         if (ask === true) {
           window.location = "login.html";
+        } else {
+        }
+      }
+
+      function confirmation2() {
+        var ask = confirm("Apakah Anda Yakin ?");
+
+        if (ask === true) {
+          alert("Data Berhasil Dihapus");
         } else {
         }
       }

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Thearning-Rekapan nilai</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="fontawesome/css/all.min.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo-details">
+        <i class="bx bx-bar-chart-alt-2"></i>
+        <span class="logo_name">Thearning</span>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="{% url 'admin' %}">
+            <i class="bx bx-grid-alt"></i>
+            <span class="links_name">Dashboard</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'history' %}">
+            <i class="bx bx-history"></i>
+            <span class="links_name">Riwayat Login</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'report' %}">
+            <i class="bx bxs-report"></i>
+            <span class="links_name">Laporan Akhir</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'teacher' %}">
+            <i class="bx bxs-user-rectangle"></i>
+            <span class="links_name">Data Guru</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'student' %}">
+            <i class="bx bx-book-reader"></i>
+            <span class="links_name">Data Siswa</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'class' %}">
+            <i class="bx bx-building-house"></i>
+            <span class="links_name">Data Kelas</span>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'course' %}">
+            <i class="bx bx-book-open"></i>
+            <span class="links_name">Data Mapel</span>
+          </a>
+        </li>
+        <li class="log_out">
+          <a href="#" onclick="confirmation()">
+            <i class="bx bx-log-out"></i>
+            <span class="links_name">Log out</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <section class="home-section">
+      <nav>
+        <div class="sidebar-button">
+          <i class="bx bxs-user-circle"></i>
+          <span class="dashboard">Edit</span>
+        </div>
+        <div class="search-box">
+          <input type="text" placeholder="Search..." />
+          <i class="bx bx-search"></i>
+        </div>
+        <div class="profile-details" onclick="move('profile.html')">
+          <i class="bx bx-user-circle"></i>
+          <span class="admin_name">Username (Level)</span>
+          <i class="bx bx-log-in-circle"></i>
+        </div>
+      </nav>
+
+      <div class="home-content">
+        <div class="update-boxes2" data-aos="fade-right">
+          <div class="recent-update box input v2">
+            <div class="title">Admin</div>
+            <div class="update-details">
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details icon">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-user-circle"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Username</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Nama"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Password</td>
+                    <td>
+                      <input
+                        type="password"
+                        name="password"
+                        id="password"
+                        placeholder="Password"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">NIP</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="nip"
+                        id="nip"
+                        placeholder="NIP"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jenis Kelamin</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="gender"
+                        id="gender"
+                        placeholder="Jenis Kelamin"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Level</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="level"
+                        id="level"
+                        placeholder="Level"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Mata Pelajaran</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="course"
+                        id="course"
+                        placeholder="Mata Pelajaran"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Kelas"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="buttonSave v2">
+              <a href="#" onClick="showHide()" class="edit"
+                ><i class="bx bx-edit" style="margin-right: 5px"></i>Edit
+                Password</a
+              >
+              <a
+                href="{% url 'admin' %}"
+                onClick="alert('Guru Berhasil Didaftarkan')"
+                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let sidebar = document.querySelector(".sidebar");
+      let sidebarBtn = document.querySelector(".sidebarBtn");
+      sidebarBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+        if (sidebar.classList.contains("active")) {
+          sidebarBtn.classList.replace("bx-menu", "bx-menu-alt-right");
+        } else sidebarBtn.classList.replace("bx-menu-alt-right", "bx-menu");
+      };
+
+      function confirmation() {
+        var ask = confirm("Apakah Anda Yakin ?");
+
+        if (ask === true) {
+          window.location = "login.html";
+        } else {
+        }
+      }
+      function move(url) {
+        window.location = url;
+      }
+    </script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+      AOS.init({
+        offset: 200,
+        delay: 100,
+        duration: 400,
+        easing: "ease",
+        once: false,
+        mirror: false,
+        anchorPlacement: "top-bottom",
+      });
+
+      function showHide() {
+        let text;
+        let password = prompt("Masukkan Password Baru");
+        if (password == null || password == "") {
+          alert("Password Tidak Diubah");
+        } else {
+          let conPassword = prompt("Konfirmasi Password");
+          if (password == conPassword) {
+            alert("Password Berhasil Diubah");
+            document.getElementById("password").value = password;
+          } else {
+            alert("Password Tidak Sama");
+          }
+        }
+      }
+    </script>
+  </body>
+</html>

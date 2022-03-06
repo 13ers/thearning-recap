@@ -20,43 +20,43 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin/admin.html">
+          <a href="{% url 'admin' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
+          <a href="{% url 'history' %}">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
+          <a href="{% url 'report' %}">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
-            <i class="bx bxs-user-rectangle bx-tada"></i>
+          <a href="{% url 'teacher' %}">
+            <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="student.html" class="active">
-            <i class="bx bx-book-reader bx-tada"></i>
+          <a href="{% url 'student' %}">
+            <i class="bx bx-book-reader"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="class.html">
-            <i class="bx bx-building-house"></i>
+          <a href="{% url 'class' %}" class="active">
+            <i class="bx bx-building-house bx-tada"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="course.html">
+          <a href="{% url 'course' %}">
             <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
           </a>
@@ -73,7 +73,7 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Input</span>
+          <span class="dashboard">Edit</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
@@ -88,69 +88,65 @@
 
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
-          <div class="recent-update box">
-            <div class="title">Siswa</div>
+          <div class="recent-update box input">
+            <div class="title">kelas</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Nama Siswa</li>
-                <li class="topic">NIK</li>
-                <li class="topic">Jenis Kelamin</li>
-                <li class="topic">Kelas</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  <input
-                    type="text"
-                    name="studentName"
-                    id="studentName"
-                    placeholder="Masukan Nama"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="nik"
-                    id="nik"
-                    placeholder="Masukan NIK"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="gender"
-                    id="gender"
-                    placeholder="Masukkan Jenis Kelamin"
-                  />
-                </li>
-                <li>
-                  <input
-                    type="text"
-                    name="class"
-                    id="class"
-                    placeholder="Masukkan Kelas"
-                  />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details icon">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-building-house"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Tingkat</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="level"
+                        id="level"
+                        placeholder="Tingkat"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jurusan</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="major"
+                        id="major"
+                        placeholder="Jurusan"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jumlah Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Jumlah Kelas"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
             </div>
-            <div class="button">
+            <div class="buttonSave">
               <a
-                href="student.html"
-                onClick="alert('Data Siswa Berhasil Ditambahkan')"
-                >Simpan</a
+                href="{% url 'class' %}"
+                onClick="alert('Data Kelas Berhasil Diubah')"
+                ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
               >
             </div>
           </div>

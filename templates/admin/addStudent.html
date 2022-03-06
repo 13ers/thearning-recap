@@ -20,51 +20,45 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="admin/admin.html">
+          <a href="{% url 'admin' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
         </li>
         <li>
-          <a href="history.html">
+          <a href="{% url 'history' %}">
             <i class="bx bx-history"></i>
             <span class="links_name">Riwayat Login</span>
           </a>
         </li>
         <li>
-          <a href="report.html">
+          <a href="{% url 'report' %}">
             <i class="bx bxs-report"></i>
             <span class="links_name">Laporan Akhir</span>
           </a>
         </li>
         <li>
-          <a href="teacher.html">
+          <a href="{% url 'teacher' %}">
             <i class="bx bxs-user-rectangle"></i>
             <span class="links_name">Data Guru</span>
           </a>
         </li>
         <li>
-          <a href="student.html">
-            <i class="bx bx-book-reader"></i>
+          <a href="{% url 'student' %}" class="active">
+            <i class="bx bx-book-reader bx-tada"></i>
             <span class="links_name">Data Siswa</span>
           </a>
         </li>
         <li>
-          <a href="class.html">
+          <a href="{% url 'class' %}">
             <i class="bx bx-building-house"></i>
             <span class="links_name">Data Kelas</span>
           </a>
         </li>
         <li>
-          <a href="course.html">
+          <a href="{% url 'course' %}">
             <i class="bx bx-book-open"></i>
             <span class="links_name">Data Mapel</span>
-          </a>
-        </li>
-        <li>
-          <a href="hrteacher/hrTeacher.html">
-            <i class="bx bxs-user-account"></i>
-            <span class="links_name">Wali Kelas</span>
           </a>
         </li>
         <li class="log_out">
@@ -79,13 +73,13 @@
       <nav>
         <div class="sidebar-button">
           <i class="bx bxs-user-circle"></i>
-          <span class="dashboard">Dashboard</span>
+          <span class="dashboard">Input</span>
         </div>
         <div class="search-box">
           <input type="text" placeholder="Search..." />
           <i class="bx bx-search"></i>
         </div>
-        <div class="profile-details">
+        <div class="profile-details" onclick="move('profile.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
           <i class="bx bx-log-in-circle"></i>
@@ -94,47 +88,77 @@
 
       <div class="home-content">
         <div class="update-boxes2" data-aos="fade-right">
-          <div class="recent-update box">
-            <div class="title">Profil</div>
+          <div class="recent-update box input">
+            <div class="title">Siswa</div>
             <div class="update-details">
-              <ul class="details" style="width: 150px; height: 150px">
-                <li class="topic" style="width: 150px; height: 150px">
-                  <i
-                    class="bx bx-user-circle"
-                    style="font-size: 150px; color: #0a2558"
-                  ></i>
-                </li>
-              </ul>
-              <ul class="details">
-                <li class="topic">Username(Level)</li>
-                <li class="topic">Password</li>
-                <li class="topic">Mata Pelajaran</li>
-                <li class="topic">Kelas</li>
-              </ul>
-              <ul class="details">
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-                <li>:</li>
-              </ul>
-              <ul class="details">
-                <li>
-                  Username
-                  <hr />
-                </li>
-                <li>
-                  ********
-                  <hr />
-                </li>
-                <li>
-                  MTK
-                  <hr />
-                </li>
-                <li>
-                  XI-RPL 1
-                  <hr />
-                </li>
-              </ul>
+              <table class="input">
+                <colgroup>
+                  <col span="1" style="width: 10%" />
+                  <col span="1" style="width: 20%" />
+                  <col span="1" style="width: 70%" />
+                </colgroup>
+                <tbody>
+                  <tr class="details icon">
+                    <td class="topic" rowspan="8">
+                      <i
+                        class="bx bx-user-circle"
+                        style="font-size: 150px; color: #0a2558"
+                      ></i>
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Nama</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="username"
+                        id="username"
+                        placeholder="Nama"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">NIK</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="nip"
+                        id="nik"
+                        placeholder="NIK"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Jenis Kelamin</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="gender"
+                        id="gender"
+                        placeholder="Jenis Kelamin"
+                      />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td class="topic">Kelas</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="class"
+                        id="class"
+                        placeholder="Kelas"
+                      />
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="buttonSave">
+              <a
+                href="{% url 'student' %}"
+                onClick="alert('Data Siswa Berhasil Ditambahkan')"
+                ><i class="bx bxs-file-plus" style="margin: 5px"></i>Simpan</a
+              >
             </div>
           </div>
         </div>
@@ -158,6 +182,9 @@
           window.location = "login.html";
         } else {
         }
+      }
+      function move(url) {
+        window.location = url;
       }
     </script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
