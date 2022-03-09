@@ -1,6 +1,7 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.admin.views.decorators import staff_member_required
+from django.db.models import Q
 
 from django.contrib.auth.models import User
 from django.urls import reverse
@@ -21,7 +22,8 @@ def dashboard_view(request):
         return redirect("login")
 
     if user_info.is_admin:
-        return render(request, "admin/admin.html", {"user_info":user_info, "first_name":first_name})
+        teacher = Teacher.objects.all().count()
+        return render(request, "admin/admin.html", {"user_info":user_info, "first_name":first_name, "teacher_count":teacher})
 
     elif user_info.is_homeroom:
         return render(request, "hrteacher/hrTeacher.html", {"user_info":user_info, "first_name":first_name})
@@ -31,11 +33,23 @@ def dashboard_view(request):
 
 @staff_member_required
 def teacher_data_view(request):
+
+    search = request.GET.get("search")
+    delete = request.GET.get("delete")
+
     objects = Teacher.objects.all()
 
-    count = objects.count()
+    if search:
+        objects = Teacher.objects.filter(Q(user__uid__contains=search) | Q(user__first_name__icontains=search) | Q(user__last_name__icontains=search))
 
-    return render(request, "admin/teacher.html", {"teachers": objects, "count":range(1, count + 1)})
+    if delete:
+        object_teacher = Teacher.objects.get(user__uid=delete)
+        object_teacher.delete()
+        object_user = ThearningUser.objects.get(uid=delete)
+        object_user.delete()
+        return reverse("teacher")
+
+    return render(request, "admin/teacher.html", {"teachers": objects})
 
 @staff_member_required
 def add_teacher_view(request):
@@ -47,7 +61,6 @@ def add_teacher_view(request):
         password = get('password')
         email = get('email')
         gender = get('gender')
-        status = get('level')
         course = get('course')
 
         user = ThearningUser.objects.create(
@@ -57,7 +70,7 @@ def add_teacher_view(request):
             email=email,
             password=password,
             gender=gender,
-            status=status,
+            status="teacher",
         )
 
         teacher = Teacher.objects.create(user=user, course_id=course)
@@ -66,7 +79,7 @@ def add_teacher_view(request):
         teacher.save()
 
     return render(request, "admin/addTeacher.html")
-    
+
 
 def students_list(request):
 

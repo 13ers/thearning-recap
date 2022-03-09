@@ -6,8 +6,8 @@ from .views import *
 urlpatterns = [
     path('', dashboard_view, name="dashboard"),
     path('teacher', teacher_data_view, name="teacher"),
-    path('students', students_list, name="student"),
     path("teacher/add", add_teacher_view, name="addteacher"),
+    path('students', students_list, name="student"),
     path("class", class_view, name="class"),
     path("course", course_view, name="course"),
     path("report", report_view, name="report"),

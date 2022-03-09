@@ -77,10 +77,10 @@
           <i class="bx bxs-user-circle"></i>
           <span class="dashboard">Data Guru</span>
         </div>
-        <div class="search-box">
-          <input type="text" placeholder="Search..." />
-          <i class="bx bx-search"></i>
-        </div>
+        <form class="search-box" method="GET" action="{% url 'teacher' %}">
+          <input type="text" placeholder="Search..." name="search"/>
+            <button type="submit"><i class="bx bx-search"></i></button>
+        </form>
         <div class="profile-details" onclick="move('profile.html')">
           <i class="bx bxs-user-circle"></i>
           <span class="admin_name">Username (Level)</span>
@@ -105,9 +105,9 @@
               </tr>
               {% for teacher in teachers %}
               <tr class="details">
-                <td>{{ count }}</td>
+                <td>{{ forloop.counter }}</td>
                 <td>{{ teacher.user.first_name }} {{ teacher.user.last_name }}</td>
-                <td>{{ teacher.user.user_id }}</td>
+                <td>{{ teacher.user.uid }}</td>
                 <td>{{ teacher.user.gender }}</td>
                 <td>{{ teacher.course }}</td>
                 <td>{{ teacher.user.email }}</td>
@@ -115,7 +115,7 @@
                   <a href="editTeacher.html" class="edit">Edit</a>
                 </td>
                 <td class="action">
-                  <a href="#" class="delete" onclick="confirmation2()">Hapus</a>
+                  <a method="GET" href="{% url 'teacher' %}?delete={{ teacher.user.uid }}" name="delete" class="delete" onclick="confirmation2()">Hapus</a>
                 </td>
               </tr>
               {% endfor %}
