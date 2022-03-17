@@ -112,7 +112,7 @@
                 <td>{{ teacher.course }}</td>
                 <td>{{ teacher.user.email }}</td>
                 <td class="action">
-                  <a href="editTeacher.html" class="edit">Edit</a>
+                  <a href="{% url 'edit_teacher' teacher.user.uid %}" class="edit">Edit</a>
                 </td>
                 <td class="action">
                   <a method="GET" href="{% url 'teacher' %}?delete={{ teacher.user.uid }}" name="delete" class="delete" onclick="confirmation2()">Hapus</a>

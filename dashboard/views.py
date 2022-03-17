@@ -6,8 +6,11 @@ from django.db.models import Q
 from django.contrib.auth.models import User
 from django.urls import reverse
 
-from users.models import ThearningUser
+from users.models import ThearningUser, Course
 from users.models import Student, Teacher
+
+from users.forms import ThearningUserForm, TeacherForm
+
 
 def dashboard_view(request):
 
@@ -80,6 +83,36 @@ def add_teacher_view(request):
 
     return render(request, "admin/addTeacher.html")
 
+def teacher_edit_view(request, id):
+
+    o = get_object_or_404(ThearningUser, uid=id)
+    object = get_object_or_404(Teacher, user__uid=id)
+
+    courses = Course.objects.all()
+
+    get = request.POST.get
+    if request.method == "POST":
+
+        # object.user.uid = request.POST.get("uid")
+        # object.user.first_name = request.POST.get('first_name')
+        # object.user.last_name = request.POST.get("last_name")
+        # object.user.email = request.POST.get('email')
+        # object.user.gender = request.POST.get('gender')
+        # print(request.POST.get("course"))
+        # object.course_id = request.POST.get("course")
+
+        uform = ThearningUserForm(data=request.POST, instance=o)
+        tform = TeacherForm(data=request.POST, instance=object)
+        if uform.is_valid() and tform.is_valid():
+            uform.save()
+            tform.save()
+    else:
+        uform = ThearningUserForm()
+        tform = TeacherForm()
+
+
+    return render(request, "admin/editTeacher.html", {"teachers":object, "courses":courses, "uform": uform, "tform":tform})
+
 
 def students_list(request):
 
@@ -102,3 +135,4 @@ def history_view(request):
     return render(request, "admin/history.html")
 
 
+ 

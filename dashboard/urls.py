@@ -7,6 +7,7 @@ urlpatterns = [
     path('', dashboard_view, name="dashboard"),
     path('teacher', teacher_data_view, name="teacher"),
     path("teacher/add", add_teacher_view, name="addteacher"),
+    path("teacher/edit/<id>", teacher_edit_view, name="edit_teacher"),
     path('students', students_list, name="student"),
     path("class", class_view, name="class"),
     path("course", course_view, name="course"),

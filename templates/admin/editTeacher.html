@@ -22,7 +22,7 @@
       </div>
       <ul class="nav-links">
         <li>
-          <a href="{% url 'admin' %}">
+          <a href="{% url 'dashboard' %}">
             <i class="bx bx-grid-alt"></i>
             <span class="links_name">Dashboard</span>
           </a>
@@ -108,36 +108,54 @@
                       ></i>
                     </td>
                   </tr>
-                  <tr class="details">
-                    <td class="topic">Username</td>
-                    <td>
-                      <input
-                        type="text"
-                        name="username"
-                        id="username"
-                        placeholder="Nama"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="topic">Password</td>
-                    <td>
-                      <input
-                        type="password"
-                        name="password"
-                        id="password"
-                        placeholder="Password"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
+                  <form action="{% url 'edit_teacher' teachers.user.uid %}" method="POST">
+                      {% csrf_token %}
+                <tr class="details">
                     <td class="topic">NIP</td>
                     <td>
                       <input
                         type="text"
-                        name="nip"
-                        id="nip"
+                        name="uid"
+                        id="uid"
+                        value="{{ teachers.user.uid }}"
                         placeholder="NIP"
+                      />
+                    </td>
+                  </tr>
+                  <tr class="details">
+                    <td class="topic">Nama Pertama</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="first_name"
+                        id="first_name"
+                        value="{{ teachers.user.first_name }}"
+                        placeholder="Nama Pertama"
+                      />
+                    </td>
+                  </tr>
+                <tr class="details">
+                    <td class="topic">Nama Terakhir</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="last_name"
+                        id="last_name"
+                        value="{{ teachers.user.last_name }}"
+                        placeholder="Nama Terakhir"
+                      />
+                    </td>
+                  </tr>
+
+                    <tr>
+                    <td class="topic">Email</td>
+                    <td>
+                      <input
+                        type="text"
+                        name="email"
+                        id="email"
+                        value="{{ teachers.user.email }}"
+                        placeholder="Email"
                       />
                     </td>
                   </tr>
@@ -148,41 +166,27 @@
                         type="text"
                         name="gender"
                         id="gender"
+                        value="{{ teachers.user.gender }}"
                         placeholder="Jenis Kelamin"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="topic">Level</td>
-                    <td>
-                      <input
-                        type="text"
-                        name="level"
-                        id="level"
-                        placeholder="Level"
                       />
                     </td>
                   </tr>
                   <tr>
                     <td class="topic">Mata Pelajaran</td>
                     <td>
-                      <input
-                        type="text"
-                        name="course"
-                        id="course"
-                        placeholder="Mata Pelajaran"
-                      />
-                    </td>
-                  </tr>
-                  <tr>
-                    <td class="topic">Kelas</td>
-                    <td>
-                      <input
-                        type="text"
-                        name="class"
-                        id="class"
-                        placeholder="Kelas"
-                      />
+                        <select name="course" id="course">
+                            {% for i in courses %}
+                                {% if i.course_id == teachers.course_id %}
+                                    <option selected value="{{ i.course_id }}">
+                                        {{ i.name }}
+                                    </option>
+                                    {% else %}
+                                    <option value="{{ i.course_id }}">
+                                        {{ i.name }}
+                                    </option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
                     </td>
                   </tr>
                 </tbody>
@@ -193,11 +197,12 @@
                 ><i class="bx bx-edit" style="margin-right: 5px"></i>Edit
                 Password</a
               >
+                <button type="submit">
               <a
-                href="{% url 'teacher' %}"
                 onClick="alert('Data Guru Berhasil Diubah')"
                 ><i class="bx bx-save" style="margin-right: 5px"></i>Simpan</a
               >
+                </button>
             </div>
           </div>
         </div>
